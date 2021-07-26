@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  url: 'https://us-central1-firestore-grafica-80462.cloudfunctions.net'
 };
