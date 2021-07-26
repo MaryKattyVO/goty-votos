@@ -1,27 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-grafico-barra-horizontal',
   templateUrl: './grafico-barra-horizontal.component.html',
   styleUrls: ['./grafico-barra-horizontal.component.css']
 })
-export class GraficoBarraHorizontalComponent {
+export class GraficoBarraHorizontalComponent implements OnDestroy {
   results = [
      {
-        "name": "Germany",
-        "value": 8940000
+        "name": "Juego 1",
+        "value": 20
       },
       {
-        "name": "USA",
-        "value": 5000000
+        "name": "Juego 2",
+        "value": 25
       },
       {
-        "name": "France",
-        "value": 7200000
+        "name": "Juego 3",
+        "value": 15
       },
       {
-        "name": "Frances",
-        "value": 7200000
+        "name": "Juego 4",
+        "value": 30
       }
   ];
 
@@ -35,7 +35,27 @@ export class GraficoBarraHorizontalComponent {
   xAxisLabel = 'Juegos';
   showYAxisLabel = true;
   yAxisLabel = 'Votos';
-
   colorScheme = 'nightLights';
+
+  intervalo;
+  constructor() {
+    console.log( Math.round(Math.random() * 500));
+    
+
+    this.intervalo = setInterval(()=> {
+      console.log('tick')
+      const newResults = [...this.results]
+      for( let i in newResults ) {
+        newResults[i].value =  Math.round(Math.random() * 500);
+      }
+
+      this.results = [...newResults];
+    }, 1500);
+
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.intervalo);
+  }
 
 }
