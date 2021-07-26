@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "firestore-grafica-80462": {
+      "hosting": {
+        "goty": [
+          "firestore-grafica-80462"
+        ]
+      }
+    }
+  }
+}
